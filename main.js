@@ -1,76 +1,65 @@
-let tasks = [];
-let editIndex = -1;
+let taskList = [];
 
-function addTask() {
-    const taskName = document.getElementById('taskName').value;
-    const dueDate = document.getElementById('dueDate').value;
-    const priority = document.getElementById('priority').value;
+const addTask = () => {
+    const taskName = document.getElementById("taskName").value;
+    const dueDate = document.getElementById("dueDate").value;
+    const priority = document.getElementById("priority").value;
 
-    if (taskName === '' || dueDate === '' || priority === '') {
-        alert('Please fill out all fields.');
-        return;
-    }
+    if (taskName && dueDate) {
+        const task = {
+            name: taskName,
+            dueDate: dueDate,
+            priority: priority,
+            completed: false
+        };
 
-    const task = {
-        name: taskName,
-        dueDate: dueDate,
-        priority: priority
-    };
-
-    if (editIndex === -1) {
-        tasks.push(task);
+        taskList.push(task);
+        renderTasks();
+        clearInputFields();
     } else {
-        tasks[editIndex] = task;
-        editIndex = -1;
-        document.getElementById('addTaskButton').textContent = 'Add Task';
+        alert("Please fill in all fields.");
     }
+};
 
-    displayTasks();
-    clearForm();
-}
+const deleteTask = (index) => {
+    taskList.splice(index, 1);
+    renderTasks();
+};
 
-function displayTasks() {
-    const taskList = document.getElementById('taskList');
-    taskList.innerHTML = '';
+const toggleCompletion = (index) => {
+    taskList[index].completed = !taskList[index].completed;
+    renderTasks();
+};
 
-    tasks.forEach((task, index) => {
-        const li = document.createElement('li');
+const renderTasks = () => {
+    const taskListElement = document.getElementById("taskList");
+    taskListElement.innerHTML = "";
 
-        const taskInfo = document.createElement('span');
-        taskInfo.textContent = `Task: ${task.name}, Due: ${task.dueDate}, Priority: ${task.priority}`;
-        li.appendChild(taskInfo);
+    taskList.forEach((task, index) => {
+        const taskElement = document.createElement("li");
+        taskElement.classList.toggle("completed", task.completed);
 
-        const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
-        editButton.onclick = () => editTask(index);
-        li.appendChild(editButton);
+        const priorityClass = task.priority.toLowerCase();
+        taskElement.innerHTML = `
+            <span class="task-name">${task.name}</span>
+            <span class="task-details">
+                <span class="task-date">${task.dueDate}</span>
+                <span class="priority ${priorityClass}">${task.priority}</span>
+            </span>
+            <div class="task-actions">
+                <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
+                <button class="toggle-btn" onclick="toggleCompletion(${index})">
+                    ${task.completed ? "Mark as Pending" : "Mark as Completed"}
+                </button>
+            </div>
+        `;
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.onclick = () => deleteTask(index);
-        li.appendChild(deleteButton);
-
-        taskList.appendChild(li);
+        taskListElement.appendChild(taskElement);
     });
-}
+};
 
-function clearForm() {
-    document.getElementById('taskName').value = '';
-    document.getElementById('dueDate').value = '';
-    document.getElementById('priority').value = 'Low';
-}
-
-function editTask(index) {
-    const task = tasks[index];
-    document.getElementById('taskName').value = task.name;
-    document.getElementById('dueDate').value = task.dueDate;
-    document.getElementById('priority').value = task.priority;
-
-    editIndex = index;
-    document.getElementById('addTaskButton').textContent = 'Save Task';
-}
-
-function deleteTask(index) {
-    tasks.splice(index, 1);
-    displayTasks();
-}
+const clearInputFields = () => {
+    document.getElementById("taskName").value = "";
+    document.getElementById("dueDate").value = "";
+    document.getElementById("priority").value = "Low";
+};
