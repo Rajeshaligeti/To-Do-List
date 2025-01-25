@@ -28,13 +28,13 @@ Access the live version [Website](https://rajeshaligeti.github.io/To-Do-List).
 
 ### Clone the Repository
 ```bash
-git clone https://github.com/yourusername/vibrant-todo-list.git
+https://github.com/Rajeshaligeti/To-Do-List.git
 ```
 
 ### Open the Project
 1. Navigate to the project directory:
    ```bash
-   cd vibrant-todo-list
+   cd To-Do-List
    ```
 2. Open `index.html` in your browser to start using the app.
 
