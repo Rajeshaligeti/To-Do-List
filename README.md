@@ -1,4 +1,4 @@
-# To-Do List Application
+# 📝 To-Do List Application 
 
 Welcome to the **To-Do List Application**! This is a joyful, feature-rich, and user-friendly to-do list app designed to make task management fun and engaging. With a lively design, playful animations, and an intuitive interface, this app turns organizing your day into a delightful experience. 
 
@@ -59,7 +59,7 @@ git clone https://github.com/yourusername/vibrant-todo-list.git
 
 ## 📜 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [GNU GENERAL PUBLIC LICENSE](LICENSE).
 
 ---
 
