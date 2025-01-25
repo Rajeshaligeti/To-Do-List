@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ariel', sans-serif;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b, #ffcc70, #6a11cb, #2575fc, #00d2d3);
+    background-size: 400% 400%;
+    animation: gradientAnimation 8s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: #fff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 800px;
+    padding: 40px 30px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    animation: scaleUp 0.8s ease-out;
+}
+
+header h1 {
+    font-family:"Arial Black", Gadget, sans-serif;
+    text-align: center;
+    color: #ff4081;
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: bounceIn 1s ease-out;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, select, button {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, select {
+    background-color: #fdf2e9;
+}
+
+input:focus, select:focus {
+    background-color: #fadddd;
+    box-shadow: 0 0 10px rgb(246, 168, 168);
+}
+
+button {
+    background-color: #ff4081;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+    border-radius: 30px;
+    padding: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #ff3385;
+    transform: scale(1.1) rotate(-0.2deg);
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+ul li {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    opacity: 0;
+    animation: fadeInItem 0.5s ease-out forwards;
+}
+
+ul li.completed {
+    background-color: #76ff03;
+    color: #388e3c;
+    text-decoration: line-through;
+    transform: scale(0.98);
+}
+
+ul li .priority {
+    padding: 8px 15px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+ul li .low {
+    background-color: #ff9800;
+}
+
+ul li .medium {
+    background-color: #2196f3;
+}
+
+ul li .high {
+    background-color: #f44336;
+}
+
+ul li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: #ffecf1;
+    cursor: pointer;
+}
+
+ul li .delete-btn, ul li .toggle-btn {
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+
+ul li .delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+ul li .delete-btn:hover {
+    background-color: #d32f2f;
+    transform: scale(1.1);
+}
+
+ul li .toggle-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+ul li .toggle-btn:hover {
+    background-color: #388e3c;
+    transform: scale(1.1);
+}
+
+.task-actions {
+    display: flex;
+    gap: 20px;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInItem {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
